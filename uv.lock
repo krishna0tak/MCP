@@ -608,10 +608,14 @@ version = "0.1.0"
 source = { editable = "." }
 dependencies = [
     { name = "fastmcp" },
+    { name = "mcp" },
 ]
 
 [package.metadata]
-requires-dist = [{ name = "fastmcp", specifier = ">=4.0.3" }]
+requires-dist = [
+    { name = "fastmcp", specifier = ">=4.0.3" },
+    { name = "mcp", specifier = ">=2.2.0" },
+]
 
 [[package]]
 name = "more-itertools"
