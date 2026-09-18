@@ -1,3 +1,4 @@
+import asyncio
 import os
 from mcp.client.stdio import stdio_client
 from mcp import ClientSession, StdioServerParameters , StdioServerParameters , client
@@ -12,4 +13,21 @@ server_params = StdioServerParameters(
         env={}
 )
 #client session
+async def main():
 
+    async with stdio_client(server_params) as (read,write):
+        
+        async with ClientSession(read,write) as session:
+
+            await session.initialize()
+            # Fetch the tools
+            tools = await session.list_tools()
+            print("Available tools:", tools)
+
+            # Use the fetch tool
+            result = await session.call_tool("process",arguments={"path": "/path/to/data"})
+            print("Result:", result)
+
+
+if __name__ == "__main__":
+    asyncio.run(main())

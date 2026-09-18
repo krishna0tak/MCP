@@ -9,7 +9,7 @@ def fetch():
 
 
 @mcp.tool()
-def process():
+def process(path: str):
     '''Use this tool to process data from the server'''
     return {"processed_data": "processed data"}
 
