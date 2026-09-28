@@ -1,4 +1,5 @@
 from fastmcp import FastMCP
+from fastmcp.server import create_proxy
 import os
 
 mcp = FastMCP()
@@ -23,19 +24,21 @@ async def process(path:str):
 
 # Mount the tools to the MCP instance
 mcp.mount(
-    FastMCP.as_proxy({
+    create_proxy({
         "mcpServers" : {
             "ddg_mcp": {"command":"uvx", "args": ["duckduckgo-mcp-server"]}        }
     }
-    )
+    ),
+    namespace="ddg",
 )
 
 mcp.mount(
-    FastMCP.as_proxy({
+    create_proxy({
         "mcpServers" : {
             "agentic_terminal": {"command":"uvx", "args": ["agentic_terminal"]}        }
     }
-    )
+    ),
+    namespace="terminal",
 )
 
 if __name__ == "__main__":
