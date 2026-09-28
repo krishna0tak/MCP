@@ -1,4 +1,5 @@
 from fastmcp import FastMCP
+import os
 
 mcp = FastMCP()
 
@@ -39,4 +40,8 @@ mcp.mount(
 
 if __name__ == "__main__":
     # Run the MCP server
-    mcp.run(transport="streamable-http", host="0.0.0.0", port=8050)
+    mcp.run(
+        transport="streamable-http",
+        host="0.0.0.0",
+        port=int(os.environ.get("PORT", "8050")),
+    )
