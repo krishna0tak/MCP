@@ -1,0 +1,8 @@
+{
+  "servers": {
+    "remote-mcp": {
+      "type": "http",
+      "url": "https://mcp-1-hrtq.onrender.com/mcp"
+    }
+  }
+}
